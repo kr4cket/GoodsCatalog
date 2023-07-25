@@ -1,0 +1,49 @@
+﻿@model GoodsCatalog.Models.Good;
+@{
+    ViewData["Title"] = "Home Page";
+    List<Good> goods = (List<Good>)ViewData["Goods"]!;
+}
+
+
+<div class="container">
+    <h3>Сортировка</h3>
+    <form>
+        <select>
+            <option>По возрастанию</option>
+            <option>По убыванию</option>
+            <option>По алфавиту</option>
+            <option>По популярности</option>
+        </select>
+
+        <input type="submit" value="Сотрировать"/>
+    </form>
+
+    <div class="container">
+        <div>
+            <h3>Фильтрация</h3>
+            <input type="text" name="goodName"/>
+            <input type="text" name="price" />
+            <input type="submit" value="Фильтровать" />
+        </div>
+        <table class="table table-hover">
+            @foreach (var good in goods)
+            {
+                <tr>
+                    <td>
+                        @good.GoodsManufacture?.Name
+                    </td>
+                    <td>
+                        @good.GoodName
+                    </td>
+                    <td>
+                        @good.Price
+                    </td>
+                    <td>
+                        Подробнее
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
